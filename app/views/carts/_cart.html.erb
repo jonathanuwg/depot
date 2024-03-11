@@ -1,12 +1,9 @@
 <div id="<%= dom_id cart %>">
   <h2 class="font-bold text-lg mb-3"> Your Pragmatic Cart </h2>
   <ul class="list-disc list-inside">
-    <% cart.line_items.each do |item| %>
-      <li> <%= item.quantity %> &items; <%= item.product.title %> </li>
-    <% end %>
+    <%= render cart.line_items %>
   </ul>
 </div>
-
 <h2>
-<%= button_to 'Empty Cart', cart, method: :delete, class: 'bg-red-500' %>
+<%= button_to 'Empty Cart', cart, method: :delete, class: 'bg-green-500 rounded' %>
 </h2>
