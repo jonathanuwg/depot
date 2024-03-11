@@ -17,10 +17,10 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create line_item" do
     assert_difference("LineItem.count") do
-      post line_items_url, params: { product_id: products(:one).id }
-    end
+      post line_items_url, params: { product_id: products(:one).id },
+        as: :turbo_stream
+      end
 
-    follow_redirect!
     assert_select 'h2', 'Your Pragmatic Cart'
 
   end
@@ -48,4 +48,5 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to line_items_url
   end
+
 end

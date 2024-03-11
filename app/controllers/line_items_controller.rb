@@ -31,7 +31,7 @@ class LineItemsController < ApplicationController
             render turbo_stream: turbo_stream.replace(
               :cart,
               partial: 'layouts/cart',
-              locals: {cart:@cart}
+              locals: {cart:@cart, current_item: @line_item}
             )
           end
         format.html { redirect_to store_index_url }
