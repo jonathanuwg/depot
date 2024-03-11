@@ -25,8 +25,15 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product)
 
-    respond_to do |format| 
+    respond_to do |format|
       if @line_item.save
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.replace(
+              :cart,
+              partial: 'layouts/cart',
+              locals: {cart:@cart}
+            )
+          end
         format.html { redirect_to store_index_url }
         format.json { render :show, status: :created, location: @line_item }
       else
