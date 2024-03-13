@@ -15,7 +15,7 @@ class OrdersTest < ApplicationSystemTestCase
     assert has_no_field? 'Po number'
 
     select 'Check', from: 'Pay type'
-
+    
     assert has_field? 'Routing number'
     assert has_field? 'Account number'
     assert has_no_field? 'Credit card number'
